@@ -113,11 +113,18 @@ export default function BusinessSectors() {
             const isCurrent = activeTab === idx;
 
             return (
-              <button
+              <div
                 key={sec.id}
-                type="button"
+                role="button"
+                tabIndex={0}
                 onClick={() => setActiveTab(idx)}
-                className={`p-4 sm:p-5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-700 ${
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setActiveTab(idx);
+                  }
+                }}
+                className={`p-4 sm:p-5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-700 select-none ${
                   isCurrent
                     ? 'border-[#064E3B] bg-emerald-50/40 shadow-xs ring-1 ring-[#064E3B]'
                     : 'border-stone-200/90 bg-stone-50/50 hover:bg-white hover:border-stone-300'
@@ -157,7 +164,7 @@ export default function BusinessSectors() {
                     <ArrowRight className="w-3 h-3 text-stone-400" />
                   )}
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>

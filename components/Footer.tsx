@@ -3,7 +3,12 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
 
+import KinaiLogo from '@/components/KinaiLogo';
+import { useAuth } from '@/context/AuthContext';
+
 export default function Footer() {
+  const { openLoginModal } = useAuth();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -15,31 +20,9 @@ export default function Footer() {
           {/* Brand & Mission Statement */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500 text-stone-950 flex items-center justify-center font-bold">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4"
-                  >
-                    <path d="M12 12L12 2C15 2 17 4 17 7L12 12Z" fill="currentColor" fillOpacity="0.85" />
-                    <path d="M12 12L22 12C22 15 20 17 17 17L12 12Z" fill="currentColor" fillOpacity="0.85" />
-                    <path d="M12 12L12 22C9 22 7 20 7 17L12 12Z" fill="currentColor" fillOpacity="0.85" />
-                    <path d="M12 12L2 12C2 9 4 7 7 7L12 12Z" fill="currentColor" fillOpacity="0.85" />
-                  </svg>
-                </div>
-                <span className="text-xl font-bold tracking-tight text-white">
-                  PT KINAI
-                </span>
+              <div className="mb-4">
+                <KinaiLogo variant="horizontal" inverted className="h-11 w-auto" />
               </div>
-
-              <p className="text-xs tracking-wider uppercase font-semibold text-emerald-400 mb-2">
-                Kincir Angin Indonesia
-              </p>
 
               <p className="text-sm text-stone-400 leading-relaxed max-w-sm mb-4">
                 Grup perusahaan Indonesia yang berakar di tanah air dan bertumbuh menuju panggung dunia, bergerak di bidang manufaktur garmen, makanan dan minuman, energi, serta konsultansi data dan operasional.
@@ -97,6 +80,15 @@ export default function Footer() {
                   Hubungi Kami
                 </a>
               </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={openLoginModal}
+                  className="hover:text-emerald-400 text-emerald-400/90 transition-colors cursor-pointer text-left font-medium"
+                >
+                  Portal KINASIH (Log In)
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -128,7 +120,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
-          <p>
+          <p suppressHydrationWarning>
             &copy; {new Date().getFullYear()} PT KINAI (Kincir Angin Indonesia). Seluruh hak cipta dilindungi undang-undang.
           </p>
 

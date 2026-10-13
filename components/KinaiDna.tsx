@@ -86,13 +86,8 @@ export default function KinaiDna() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center gap-2 text-xs font-semibold text-[#064E3B] tracking-wider uppercase mb-3">
-            <span>Identitas &amp; Nilai Luhur</span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-stone-500 font-normal">People &amp; DNA KINAI</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-900 leading-tight">
-            KINASIH &amp; KINARIA: Bertumbuh untuk Memberi Manfaat
+            People &amp; DNA KINAI
           </h2>
         </div>
 
@@ -139,77 +134,8 @@ export default function KinaiDna() {
           </div>
         </motion.div>
 
-        {/* 2. KINAI DNA: KINARIA Philosophy */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-stretch">
-          {/* KINA Pillar */}
-          <div className="lg:col-span-6 rounded-2xl bg-white border border-stone-200/90 p-8 sm:p-10 flex flex-col justify-between shadow-xs">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#064E3B] flex items-center justify-center">
-                  <TreePine className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-stone-400">
-                    Akar Pertama
-                  </span>
-                  <h4 className="text-xl font-bold text-stone-900">
-                    KINA · Pohon Kina
-                  </h4>
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
-                KINA terinspirasi dari pohon kina, pohon yang memberikan manfaat bagi kehidupan. Pohon kina menjadi simbol bahwa pertumbuhan bukan sekadar tentang menjadi lebih besar, tinggi, atau kuat, melainkan tentang <strong>semakin berkembangnya kemampuan untuk memberikan manfaat bagi kehidupan</strong>.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-stone-100 text-xs text-stone-500 font-medium">
-              Simbol pertumbuhan kapasitas kemanfaatan sejati
-            </div>
-          </div>
-
-          {/* RIA Pillar */}
-          <div className="lg:col-span-6 rounded-2xl bg-white border border-stone-200/90 p-8 sm:p-10 flex flex-col justify-between shadow-xs">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#064E3B] flex items-center justify-center">
-                  <Smile className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-stone-400">
-                    Akar Kedua
-                  </span>
-                  <h4 className="text-xl font-bold text-stone-900">
-                    RIA · Bahagia &amp; Sukacita
-                  </h4>
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
-                RIA melambangkan kebahagiaan dan sukacita, yang tumbuh ketika kebaikan hadir, manfaat dirasakan, dan kehidupan menjadi lebih baik.
-              </p>
-              <p className="mt-4 text-sm sm:text-base text-stone-600 leading-relaxed">
-                Semakin bertumbuh, semakin besar manfaat yang dapat diberikan. Dan setiap manfaat diberikan dengan penuh ketulusan dan kebahagiaan, bukan karena keterpaksaan.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-stone-100 text-xs text-stone-500 font-medium">
-              Ketulusan memberi tanpa paksaan
-            </div>
-          </div>
-        </div>
-
-        {/* Central KINARIA Creed Banner */}
-        <div className="rounded-2xl bg-[#064E3B] text-white p-8 sm:p-10 mb-16 text-center max-w-4xl mx-auto shadow-sm">
-          <p className="text-xs uppercase tracking-widest font-semibold text-emerald-300 mb-2">
-            DNA KINARIA
-          </p>
-          <p className="text-lg sm:text-xl font-medium leading-relaxed text-emerald-50 max-w-3xl mx-auto mb-4">
-            &ldquo;Sebab, pertumbuhan sejati bukan hanya tentang seberapa jauh kita berkembang, tetapi juga seberapa besar manfaat yang dapat kita hadirkan dan seberapa tulus kita menjalaninya.&rdquo;
-          </p>
-          <p className="text-sm font-semibold tracking-wide text-white">
-            KINARIA — Bertumbuh untuk Memberi Manfaat, Memberi Manfaat dengan Bahagia.
-          </p>
-        </div>
-
-        {/* 3. KINASIH DNA */}
-        <div>
+        {/* 2. KINASIH DNA & Pilar DNA */}
+        <div className="mb-16">
           <div className="text-center max-w-2xl mx-auto mb-6">
             <h3 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
               KINASIH DNA
@@ -284,11 +210,79 @@ export default function KinaiDna() {
                       })}
                     </div>
                   </div>
-
                 </div>
               );
             })}
           </div>
+        </div>
+
+        {/* 3. Filosofi Akar KINARIA: KINA & RIA */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-stretch">
+          {/* KINA Pillar */}
+          <div className="lg:col-span-6 rounded-2xl bg-white border border-stone-200/90 p-8 sm:p-10 flex flex-col justify-between shadow-xs">
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#064E3B] flex items-center justify-center">
+                  <TreePine className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-stone-400">
+                    Akar Pertama
+                  </span>
+                  <h4 className="text-xl font-bold text-stone-900">
+                    KINA · Pohon Kina
+                  </h4>
+                </div>
+              </div>
+              <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+                KINA terinspirasi dari pohon kina, pohon yang memberikan manfaat bagi kehidupan. Pohon kina menjadi simbol bahwa pertumbuhan bukan sekadar tentang menjadi lebih besar, tinggi, atau kuat, melainkan tentang <strong>semakin berkembangnya kemampuan untuk memberikan manfaat bagi kehidupan</strong>.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-stone-100 text-xs text-stone-500 font-medium">
+              Simbol pertumbuhan kapasitas kemanfaatan sejati
+            </div>
+          </div>
+
+          {/* RIA Pillar */}
+          <div className="lg:col-span-6 rounded-2xl bg-white border border-stone-200/90 p-8 sm:p-10 flex flex-col justify-between shadow-xs">
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#064E3B] flex items-center justify-center">
+                  <Smile className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-stone-400">
+                    Akar Kedua
+                  </span>
+                  <h4 className="text-xl font-bold text-stone-900">
+                    RIA · Bahagia &amp; Sukacita
+                  </h4>
+                </div>
+              </div>
+              <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+                RIA melambangkan kebahagiaan dan sukacita, yang tumbuh ketika kebaikan hadir, manfaat dirasakan, dan kehidupan menjadi lebih baik.
+              </p>
+              <p className="mt-4 text-sm sm:text-base text-stone-600 leading-relaxed">
+                Semakin bertumbuh, semakin besar manfaat yang dapat diberikan. Dan setiap manfaat diberikan dengan penuh ketulusan dan kebahagiaan, bukan karena keterpaksaan.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-stone-100 text-xs text-stone-500 font-medium">
+              Ketulusan memberi tanpa paksaan
+            </div>
+          </div>
+        </div>
+
+        {/* Central KINARIA Creed Banner */}
+        <div className="rounded-2xl bg-[#064E3B] text-white p-8 sm:p-10 text-center max-w-4xl mx-auto shadow-sm">
+          <p className="text-xs uppercase tracking-widest font-semibold text-emerald-300 mb-2">
+            DNA KINARIA
+          </p>
+          <p className="text-lg sm:text-xl font-medium leading-relaxed text-emerald-50 max-w-3xl mx-auto mb-4">
+            &ldquo;Sebab, pertumbuhan sejati bukan hanya tentang seberapa jauh kita berkembang, tetapi juga seberapa besar manfaat yang dapat kita hadirkan dan seberapa tulus kita menjalaninya.&rdquo;
+          </p>
+          <p className="text-sm font-semibold tracking-wide text-white">
+            KINARIA — Bertumbuh untuk Memberi Manfaat, Memberi Manfaat dengan Bahagia.
+          </p>
         </div>
       </div>
     </section>

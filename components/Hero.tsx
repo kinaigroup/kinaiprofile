@@ -154,12 +154,12 @@ export default function Hero() {
                   <Icon className="w-4 h-4" />
                 </div>
                 <div className="min-w-0">
-                  <h2 className="text-sm font-semibold text-stone-900 group-hover:text-[#064E3B] transition-colors truncate">
+                  <span className="block text-sm font-semibold text-stone-900 group-hover:text-[#064E3B] transition-colors truncate">
                     {sector.title}
-                  </h2>
-                  <p className="text-xs text-stone-500 truncate mt-0.5">
+                  </span>
+                  <span className="block text-xs text-stone-500 truncate mt-0.5">
                     {sector.en}
-                  </p>
+                  </span>
                 </div>
               </a>
             );
