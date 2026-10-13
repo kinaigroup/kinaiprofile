@@ -83,10 +83,10 @@ export default function Footer() {
               <li>
                 <button
                   type="button"
-                  onClick={openLoginModal}
+                  onClick={() => openLoginModal('login')}
                   className="hover:text-emerald-400 text-emerald-400/90 transition-colors cursor-pointer text-left font-medium"
                 >
-                  Portal KINASIH (Log In)
+                  Portal KINASIH (Log In / Daftar)
                 </button>
               </li>
             </ul>
