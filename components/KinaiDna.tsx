@@ -5,8 +5,6 @@ import { Heart, TreePine, Smile, UserCheck, Shield, Eye, Award, HeartHandshake, 
 import { motion } from 'motion/react';
 
 export default function KinaiDna() {
-  const [selectedPillar, setSelectedPillar] = useState<'within' | 'with' | 'beyond'>('within');
-
   const dnaPillars = [
     {
       id: 'within',
@@ -210,57 +208,44 @@ export default function KinaiDna() {
           </p>
         </div>
 
-        {/* 3. DNA PILLARS: WITHIN · WITH · BEYOND (K-I-N-A-R-I-A) */}
+        {/* 3. KINASIH DNA */}
         <div>
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#064E3B] block mb-1">
-              Tiga Pilar DNA (K · I · N · A · R · I · A)
-            </span>
-            <h3 className="text-xl sm:text-2xl font-bold text-stone-900">
-              Pilar DNA: WITHIN, WITH, dan BEYOND
+          <div className="text-center max-w-2xl mx-auto mb-6">
+            <h3 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+              KINASIH DNA
             </h3>
           </div>
 
-          {/* Segmented Pillar Selector for mobile/tab navigation */}
-          <div className="flex justify-center mb-8">
-            <div className="inline-flex p-1 bg-stone-200/80 rounded-xl">
-              {dnaPillars.map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => setSelectedPillar(p.id as 'within' | 'with' | 'beyond')}
-                  className={`px-4 sm:px-6 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-700 ${
-                    selectedPillar === p.id
-                      ? 'bg-[#064E3B] text-white shadow-xs'
-                      : 'text-stone-700 hover:text-stone-950'
-                  }`}
-                >
-                  {p.title}
-                </button>
+          {/* Tipografi K · I · N · A · R · I · A - Tanpa Background */}
+          <div className="flex items-center justify-center mb-10">
+            <div className="flex items-center gap-2 sm:gap-3.5 text-lg sm:text-2xl font-bold tracking-[0.25em] text-[#064E3B]">
+              {['K', 'I', 'N', 'A', 'R', 'I', 'A'].map((char, index) => (
+                <React.Fragment key={index}>
+                  <span>{char}</span>
+                  {index < 6 && (
+                    <span aria-hidden="true" className="text-emerald-700/35 font-light text-base select-none">
+                      ·
+                    </span>
+                  )}
+                </React.Fragment>
               ))}
             </div>
           </div>
 
-          {/* DNA Pillars Display */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {dnaPillars.map((pillar) => {
-              const isSelected = selectedPillar === pillar.id;
-
+          {/* DNA Pillars Display: All 3 Columns Equal & Open */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {dnaPillars.map((pillar, pIdx) => {
+              const pNumber = String(pIdx + 1).padStart(2, '0');
               return (
                 <div
                   key={pillar.id}
-                  onClick={() => setSelectedPillar(pillar.id as 'within' | 'with' | 'beyond')}
-                  className={`rounded-2xl border p-6 sm:p-8 transition-all cursor-pointer flex flex-col justify-between ${
-                    isSelected
-                      ? 'border-[#064E3B] bg-white ring-2 ring-[#064E3B]/20 shadow-sm'
-                      : 'border-stone-200/90 bg-white/70 hover:bg-white hover:border-stone-300'
-                  }`}
+                  className="rounded-2xl border border-stone-200/90 bg-white p-6 sm:p-8 hover:border-[#064E3B]/40 hover:shadow-xs transition-all flex flex-col justify-between"
                 >
                   <div>
                     {/* Header of Pillar */}
                     <div className="pb-5 mb-6 border-b border-stone-100">
                       <span className="text-xs font-mono font-bold text-emerald-800 uppercase tracking-widest block mb-1">
-                        Pilar DNA
+                        Pilar DNA {pNumber}
                       </span>
                       <h4 className="text-2xl font-extrabold text-stone-900 tracking-tight">
                         {pillar.title}
