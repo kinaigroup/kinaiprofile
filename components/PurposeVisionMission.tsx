@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Target, Eye, Compass, Heart, Shield, Sparkles, Zap, Users, Lightbulb, Sprout } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function PurposeVisionMission() {
-  const [activeLetter, setActiveLetter] = useState<string>('K');
-
   const missionItems = [
     {
+      step: '01',
       letter: 'K',
       title: 'KIND',
       idDesc: 'Menjadi pribadi yang baik, melakukan kebaikan, dan melakukannya dengan cara yang baik.',
@@ -16,6 +15,7 @@ export default function PurposeVisionMission() {
       icon: Heart,
     },
     {
+      step: '02',
       letter: 'I',
       title: 'INTEGRITY',
       idDesc: 'Melakukan hal yang benar, bahkan ketika tidak ada yang melihat.',
@@ -23,6 +23,7 @@ export default function PurposeVisionMission() {
       icon: Shield,
     },
     {
+      step: '03',
       letter: 'N',
       title: 'NURTURE',
       idDesc: 'Membantu orang lain bertumbuh dan menjadi versi terbaik dirinya.',
@@ -30,6 +31,7 @@ export default function PurposeVisionMission() {
       icon: Sprout,
     },
     {
+      step: '04',
       letter: 'A',
       title: 'ACT',
       idDesc: 'Mengubah niat baik menjadi tindakan yang bermakna.',
@@ -37,6 +39,7 @@ export default function PurposeVisionMission() {
       icon: Zap,
     },
     {
+      step: '05',
       letter: 'S',
       title: 'SERVE',
       idDesc: 'Menciptakan nilai yang bermakna bagi pelanggan, masyarakat dan lingkungan.',
@@ -44,15 +47,15 @@ export default function PurposeVisionMission() {
       icon: Users,
     },
     {
+      step: '06',
       letter: 'I',
       title: 'INNOVATE',
-      subKey: 'I2',
-      titleUnique: 'INNOVATE',
       idDesc: 'Menemukan cara yang lebih baik untuk menciptakan nilai yang lebih besar.',
       enDesc: 'Find better ways to create greater value.',
       icon: Lightbulb,
     },
     {
+      step: '07',
       letter: 'H',
       title: 'HARMONIZE',
       idDesc: 'Bertumbuh selaras dengan manusia dan bumi.',
@@ -145,84 +148,83 @@ export default function PurposeVisionMission() {
           </motion.div>
         </div>
 
-        {/* Mission - K.I.N.A.S.I.H Grid */}
+        {/* Mission - K.I.N.A.S.I.H Section */}
         <div className="bg-white rounded-2xl border border-stone-200/90 p-8 sm:p-10 shadow-xs">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 pb-6 border-b border-stone-100">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Compass className="w-4 h-4 text-[#064E3B]" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#064E3B]">
-                  Mission
-                </span>
-                <span className="text-xs text-stone-400">· How We Go to There</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-stone-900">
-                Tujuh Nilai Misi: K · I · N · A · S · I · H
-              </h3>
+          {/* Mission Header */}
+          <div className="mb-6 pb-5 border-b border-stone-100">
+            <div className="flex items-center gap-2 mb-1">
+              <Compass className="w-4 h-4 text-[#064E3B]" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#064E3B]">
+                Mission
+              </span>
+              <span className="text-xs text-stone-400">· How We Go to There</span>
             </div>
-
-            {/* Interactive Selector Pill alternative: Clean Segmented Bar */}
-            <div className="flex items-center gap-1.5 p-1 bg-stone-100 rounded-lg overflow-x-auto max-w-full">
-              {missionItems.map((item, index) => {
-                const key = item.subKey || item.letter;
-                const isActive = activeLetter === key;
-                return (
-                  <button
-                    key={`${item.title}-${index}`}
-                    type="button"
-                    onClick={() => setActiveLetter(key)}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-700 ${
-                      isActive
-                        ? 'bg-[#064E3B] text-white shadow-xs'
-                        : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
-                    }`}
-                  >
-                    {item.letter} - {item.title}
-                  </button>
-                );
-              })}
-            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-stone-900">
+              Tujuh Misi KINASIH
+            </h3>
           </div>
 
-          {/* Cards for all 7 items */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {missionItems.map((item, index) => {
-              const Icon = item.icon;
-              const key = item.subKey || item.letter;
-              const isHighlighted = activeLetter === key;
+          {/* Pita Progresif 2 Baris: Row 1 KINASIH, Row 2 Kind · Integrity · dst */}
+          <div className="mb-8 py-3 px-4 rounded-xl bg-stone-50 border border-stone-200/70 text-center">
+            {/* Row 1: KINASIH */}
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2.5 mb-2">
+              {['K', 'I', 'N', 'A', 'S', 'I', 'H'].map((char, i) => (
+                <span
+                  key={i}
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#064E3B] text-white font-extrabold text-[15px] sm:text-base flex items-center justify-center shadow-2xs"
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
 
+            {/* Row 2: Kind · Integrity · Nurture ... */}
+            <p className="text-[8px] sm:text-[9px] uppercase tracking-wider text-stone-500 font-medium">
+              Kind · Integrity · Nurture · Act · Serve · Innovate · Harmonize
+            </p>
+          </div>
+
+          {/* Vertical Stack: Cards Scroll Downwards Sequentially (No 4 & 3 rows) */}
+          <div className="space-y-4">
+            {missionItems.map((item) => {
+              const Icon = item.icon;
               return (
                 <div
-                  key={`${item.title}-${index}`}
-                  onClick={() => setActiveLetter(key)}
-                  className={`p-5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
-                    isHighlighted
-                      ? 'border-[#064E3B] bg-emerald-50/40 shadow-xs'
-                      : 'border-stone-200/80 bg-stone-50/50 hover:border-stone-300 hover:bg-white'
-                  }`}
+                  key={item.step}
+                  className="p-5 sm:p-6 rounded-xl border border-stone-200/90 bg-stone-50/40 hover:bg-white hover:border-[#064E3B]/40 hover:shadow-xs transition-all"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-7 h-7 rounded-md bg-[#064E3B] text-white font-bold text-xs flex items-center justify-center">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
+                    {/* Mission Header & Identifier (Col 1-4 on Desktop) */}
+                    <div className="lg:col-span-4 flex items-center justify-between lg:justify-start gap-3">
+                      <div className="flex items-center gap-3">
+                        <span className="w-10 h-10 rounded-xl bg-[#064E3B] text-white font-extrabold text-base flex items-center justify-center shadow-2xs shrink-0">
                           {item.letter}
                         </span>
-                        <h4 className="text-sm font-bold text-stone-900 tracking-wide">
-                          {item.title}
-                        </h4>
+                        <div>
+                          <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-stone-400 block leading-none">
+                            Mission {item.step}
+                          </span>
+                          <h4 className="text-base font-bold text-stone-900 tracking-wide mt-1">
+                            {item.title}
+                          </h4>
+                        </div>
                       </div>
-                      <Icon className={`w-4 h-4 ${isHighlighted ? 'text-[#064E3B]' : 'text-stone-400'}`} />
+                      <Icon className="w-4 h-4 text-[#064E3B] lg:ml-auto" />
                     </div>
 
-                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed mb-4">
-                      {item.idDesc}
-                    </p>
-                  </div>
+                    {/* Indonesian Description (Col 5-8 on Desktop) */}
+                    <div className="lg:col-span-4 lg:border-l lg:border-stone-200/80 lg:pl-6">
+                      <p className="text-xs sm:text-sm text-stone-800 leading-relaxed font-normal">
+                        {item.idDesc}
+                      </p>
+                    </div>
 
-                  <div className="pt-3 border-t border-stone-200/60">
-                    <p className="text-[11px] text-stone-500 italic leading-normal">
-                      &ldquo;{item.enDesc}&rdquo;
-                    </p>
+                    {/* English Translation (Col 9-12 on Desktop) */}
+                    <div className="lg:col-span-4 lg:border-l lg:border-stone-200/80 lg:pl-6">
+                      <p className="text-xs sm:text-sm text-stone-500 italic leading-relaxed">
+                        &ldquo;{item.enDesc}&rdquo;
+                      </p>
+                    </div>
                   </div>
                 </div>
               );

@@ -300,9 +300,6 @@ export default function KinaiDna() {
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-stone-100 text-[11px] text-stone-400 text-center font-mono">
-                    Bagian dari akronim K·I·N·A·R·I·A
-                  </div>
                 </div>
               );
             })}
