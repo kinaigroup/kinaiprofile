@@ -28,6 +28,11 @@ interface RegisterData {
   phone?: string;
 }
 
+export interface RegisterResult {
+  requiresConfirmation: boolean;
+  email: string;
+}
+
 interface AuthContextType {
   user: UserProfile | null;
   isLoginModalOpen: boolean;
@@ -35,7 +40,7 @@ interface AuthContextType {
   openLoginModal: (tab?: 'login' | 'register') => void;
   closeLoginModal: () => void;
   login: (email: string, password: string) => Promise<boolean>;
-  register: (email: string, password: string, data: RegisterData) => Promise<boolean>;
+  register: (email: string, password: string, data: RegisterData) => Promise<RegisterResult>;
   loginWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
   isSupabaseConnected: boolean;
@@ -102,7 +107,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Reactive connection status without synchronous setState inside useEffect
   const isSupabaseConnected = useMemo(() => {
-    // Reading version makes this reactive if configuration is updated dynamically
     void supabaseVersion;
     return isSupabaseConfigured();
   }, [supabaseVersion]);
@@ -123,7 +127,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const client = getSupabaseClient();
     if (!client) return;
 
-    // Check active session (including redirect from Google OAuth)
+    // Check active session (including redirect from Google OAuth or preserved token)
     client.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         const u = session.user;
@@ -138,6 +142,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           avatarUrl: userMeta.avatar_url || userMeta.picture,
         };
         persistLocalUser(profile);
+      } else {
+        persistLocalUser(null);
       }
     });
 
@@ -172,14 +178,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const closeLoginModal = () => setIsLoginModalOpen(false);
 
-  // Email / ID Login
+  // Email / Password Login (signInWithPassword)
   const login = async (email: string, pass: string): Promise<boolean> => {
     if (isSupabaseConfigured()) {
-      await signInWithEmail(email, pass);
+      const data = await signInWithEmail(email, pass);
+      if (data.user) {
+        const u = data.user;
+        const userMeta = u.user_metadata || {};
+        const profile: UserProfile = {
+          id: u.id,
+          name: userMeta.full_name || u.email?.split('@')[0]?.toUpperCase() || 'INSAN KINASIH',
+          email: u.email || email,
+          role: 'Insan KINASIH',
+          department: userMeta.unit_bisnis || 'PT KINAI Group Ecosystem',
+          provider: u.app_metadata?.provider || 'supabase',
+          avatarUrl: userMeta.avatar_url || userMeta.picture,
+        };
+        persistLocalUser(profile);
+      }
       return true;
     }
 
-    // Fallback simulation if not connected yet
+    // Fallback simulation if credentials not configured yet
     await new Promise((resolve) => setTimeout(resolve, 600));
     const cleanName = email.split('@')[0]
       ? email.split('@')[0].replace(/[._-]/g, ' ').toUpperCase()
@@ -198,11 +218,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return true;
   };
 
-  // Register New Account
-  const register = async (email: string, pass: string, regData: RegisterData): Promise<boolean> => {
+  // Register New Account (signUp)
+  const register = async (
+    email: string,
+    pass: string,
+    regData: RegisterData
+  ): Promise<RegisterResult> => {
     if (isSupabaseConfigured()) {
-      await signUpWithEmail(email, pass, regData);
-      return true;
+      const data = await signUpWithEmail(email, pass, regData);
+      const requiresConfirmation = !data.session;
+
+      if (data.session?.user) {
+        const u = data.session.user;
+        const profile: UserProfile = {
+          id: u.id,
+          name: regData.fullName.toUpperCase() || u.email?.split('@')[0]?.toUpperCase() || 'INSAN KINASIH',
+          email: u.email || email,
+          role: 'Insan KINASIH',
+          department: regData.unitBisnis || 'PT KINAI Group Ecosystem',
+          provider: 'supabase',
+        };
+        persistLocalUser(profile);
+      }
+
+      return { requiresConfirmation, email };
     }
 
     // Fallback simulation if not connected yet
@@ -217,7 +256,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
 
     persistLocalUser(profile);
-    return true;
+    return { requiresConfirmation: false, email };
   };
 
   // Google Login via Supabase OAuth
