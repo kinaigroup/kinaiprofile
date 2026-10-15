@@ -51,7 +51,7 @@ export default function ResearchAndDevelopment() {
     },
     {
       id: 'consulting',
-      name: 'Konsultansi Data & Ops',
+      name: 'Konsultan Data & Operasional',
       icon: BarChart3,
       role: 'Penyusunan arsitektur analitik, model optimalisasi lini kerja, dan penyelarasan tata kelola berbasis bukti.',
     },
@@ -64,11 +64,9 @@ export default function ResearchAndDevelopment() {
         <div className="max-w-3xl mb-16">
           <div className="flex items-center gap-2 text-xs font-semibold text-[#064E3B] tracking-wider uppercase mb-3">
             <span>Sinergi &amp; Akselerasi</span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-stone-500 font-normal">Pilar Lintas Bisnis</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-900 leading-tight">
-            Research &amp; Development: Penghubung Seluruh Ekosistem KINAI
+            Research &amp; Development: Ketika Science dan Teknologi bertemu
           </h2>
         </div>
 

@@ -138,7 +138,7 @@ export default function KinaiDna() {
         <div className="mb-16">
           <div className="text-center max-w-2xl mx-auto mb-6">
             <h3 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
-              KINASIH DNA
+              7 KINASIH DNA
             </h3>
           </div>
 

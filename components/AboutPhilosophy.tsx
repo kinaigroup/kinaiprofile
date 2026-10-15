@@ -33,13 +33,11 @@ export default function AboutPhilosophy() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center gap-2 text-xs font-semibold text-[#064E3B] tracking-wider uppercase mb-3">
-            <span>Tentang &amp; Filosofi</span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-stone-500 font-normal">Kincir Angin Indonesia</span>
+          <div className="text-xs font-semibold text-[#064E3B] tracking-wider uppercase mb-3">
+            TENTANG &amp; FILOSOFI
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-900 leading-tight">
-            Filosofi Kincir Angin: Mengubah Dinamika Menjadi Nilai
+            Filosofi Kincir Angin: Mengubah Dinamika Menjadi Value dan Manfaat
           </h2>
         </div>
 
@@ -103,8 +101,8 @@ export default function AboutPhilosophy() {
                 <p>
                   KINAI adalah grup perusahaan yang bergerak di berbagai bidang, meliputi
                   manufaktur garmen (<em>garment manufacturing</em>), manufaktur makanan dan
-                  minuman (<em>food and beverage manufacturing</em>), energi, serta konsultansi di
-                  bidang data dan operasional.
+                  minuman (<em>food and beverage manufacturing</em>), energi, serta konsultan
+                  data dan operasional.
                 </p>
                 <p>
                   Melalui keberagaman bidang usaha tersebut, KINAI membangun ekosistem bisnis yang

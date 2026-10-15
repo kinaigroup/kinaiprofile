@@ -66,13 +66,13 @@ export default function BusinessSectors() {
     {
       id: 'consulting',
       num: '04',
-      title: 'Konsultansi Data dan Operasional',
-      enTitle: 'Data and Operational Consultancy',
+      title: 'Konsultan Data & Operasional',
+      enTitle: 'Data & Operations Consultant',
       icon: BarChart3,
       image: '/images/biz_consulting_1791850523029.jpg',
       tagline: 'Solusi Analisis Data dan Optimalisasi Operasional Strategis',
       description:
-        'Lini konsultansi data dan operasional KINAI membantu organisasi dan unit usaha dalam mengolah data menjadi wawasan terukur, menata alur kerja, serta merancang perbaikan operasional yang berdampak langsung pada kinerja.',
+        'Lini konsultan data dan operasional KINAI membantu organisasi dan unit usaha dalam mengolah data menjadi wawasan terukur, menata alur kerja, serta merancang perbaikan operasional yang berdampak langsung pada kinerja.',
       ecosystemRole:
         'Menyediakan analisis analitik dan optimasi sistemik yang menopang efisiensi operasional seluruh pilar manufaktur dan R&D KINAI.',
       highlights: [
@@ -93,8 +93,6 @@ export default function BusinessSectors() {
         <div className="max-w-2xl mb-10">
           <div className="flex items-center gap-2 text-xs font-semibold text-[#064E3B] tracking-wider uppercase mb-3">
             <span>Portofolio Bisnis</span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-stone-500 font-normal">Empat Pilar Industri</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-900 leading-tight">
             Ekosistem Bisnis Terintegrasi KINAI

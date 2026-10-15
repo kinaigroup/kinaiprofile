@@ -1,19 +1,42 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
+// Sanitize string values (strip accidental quotes and trailing whitespace)
+function cleanValue(val?: string | null): string {
+  if (!val) return '';
+  return val.trim().replace(/^["']|["']$/g, '');
+}
+
+// Sanitize URL (strip quotes, spaces, and trailing slashes)
+function cleanUrl(val?: string | null): string {
+  let u = cleanValue(val);
+  if (u.endsWith('/')) {
+    u = u.slice(0, -1);
+  }
+  return u;
+}
+
 // Get configuration from environment variables (Vercel VITE_ or NEXT_PUBLIC_) or client-side storage
 export function getSupabaseCredentials(): { url: string; anonKey: string } {
-  let url =
+  let url = cleanUrl(
     process.env.VITE_SUPABASE_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    '';
-  let anonKey =
+    process.env.SUPABASE_URL ||
+    ''
+  );
+
+  let anonKey = cleanValue(
     process.env.VITE_SUPABASE_ANON_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    '';
+    process.env.VITE_SUPABASE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_KEY ||
+    process.env.SUPABASE_ANON_KEY ||
+    ''
+  );
 
   if (typeof window !== 'undefined') {
-    const customUrl = localStorage.getItem('kinai_supabase_url');
-    const customKey = localStorage.getItem('kinai_supabase_anon_key');
+    const customUrl = cleanUrl(localStorage.getItem('kinai_supabase_url'));
+    const customKey = cleanValue(localStorage.getItem('kinai_supabase_anon_key'));
+
     if (customUrl && (!url || url.includes('your-project'))) {
       url = customUrl;
     }
@@ -22,7 +45,7 @@ export function getSupabaseCredentials(): { url: string; anonKey: string } {
     }
   }
 
-  return { url: url.trim(), anonKey: anonKey.trim() };
+  return { url, anonKey };
 }
 
 export function isSupabaseConfigured(): boolean {
@@ -56,6 +79,12 @@ export function getSupabaseClient(): SupabaseClient | null {
         persistSession: true,
         autoRefreshToken: true,
         detectSessionInUrl: true,
+        flowType: 'pkce',
+      },
+      global: {
+        headers: {
+          apikey: anonKey,
+        },
       },
     });
     lastUrl = url;
@@ -118,23 +147,43 @@ export async function signInWithEmail(email: string, password: string) {
 // Helper to sign in with Google through Supabase Auth (signInWithOAuth)
 export async function signInWithGoogle() {
   const client = getSupabaseClient();
-  if (!client) {
+  const { anonKey } = getSupabaseCredentials();
+  if (!client || !anonKey) {
     throw new Error('CONFIG_MISSING');
   }
 
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
+
+  // Use skipBrowserRedirect: true so we can ensure the apikey param is attached to the URL
+  // before browser navigation. This prevents Kong API Gateway from rejecting the request with:
+  // {"message":"No API key found in request","hint":"No `apikey` request header or url param was found."}
   const { data, error } = await client.auth.signInWithOAuth({
     provider: 'google',
     options: {
       redirectTo: origin,
+      skipBrowserRedirect: true,
       queryParams: {
         access_type: 'offline',
         prompt: 'consent',
+        apikey: anonKey,
       },
     },
   });
 
   if (error) throw error;
+
+  if (data?.url) {
+    try {
+      const targetUrl = new URL(data.url);
+      if (!targetUrl.searchParams.has('apikey')) {
+        targetUrl.searchParams.set('apikey', anonKey);
+      }
+      window.location.assign(targetUrl.toString());
+    } catch {
+      window.location.assign(data.url);
+    }
+  }
+
   return data;
 }
 
@@ -152,18 +201,21 @@ export function formatSupabaseAuthError(err: unknown): string {
 
   if (err instanceof Error) {
     if (err.message === 'CONFIG_MISSING') {
-      return 'Konfigurasi Supabase belum terdeteksi. Pastikan VITE_SUPABASE_URL dan VITE_SUPABASE_ANON_KEY sudah disiapkan di Vercel.';
+      return 'Konfigurasi Supabase belum lengkap. Pastikan VITE_SUPABASE_URL dan VITE_SUPABASE_ANON_KEY sudah diatur di Vercel.';
     }
 
     const msg = err.message.toLowerCase();
+    if (msg.includes('no api key found') || msg.includes('apikey') || msg.includes('no `apikey`')) {
+      return 'Kunci API Supabase (anon key) tidak terdeteksi. Silakan periksa nilai VITE_SUPABASE_ANON_KEY pada pengaturan Vercel.';
+    }
     if (msg.includes('invalid login credentials')) {
       return 'Email atau kata sandi tidak sesuai. Silakan periksa kembali.';
     }
     if (msg.includes('email not confirmed')) {
-      return 'Email Anda belum dikonfirmasi. Silakan periksa tautan konfirmasi di inbox atau folder spam email Anda.';
+      return 'Email Anda belum dikonfirmasi. Silakan periksa tautan konfirmasi di kotak masuk atau folder spam email Anda.';
     }
     if (msg.includes('user already registered') || msg.includes('already registered')) {
-      return 'Alamat email ini sudah terdaftar. Silakan masuk (Log In) atau gunakan pemulihan kata sandi.';
+      return 'Alamat email ini sudah terdaftar. Silakan masuk (Log In) atau gunakan opsi pemulihan kata sandi.';
     }
     if (msg.includes('password should be at least') || msg.includes('weak_password')) {
       return 'Kata sandi minimal 6 karakter.';
@@ -186,10 +238,13 @@ export function formatSupabaseAuthError(err: unknown): string {
 // Helper to save Supabase custom credentials in browser
 export function setCustomSupabaseCredentials(url: string, key: string) {
   if (typeof window !== 'undefined') {
-    if (url) localStorage.setItem('kinai_supabase_url', url.trim());
+    const cleanedUrl = cleanUrl(url);
+    const cleanedKey = cleanValue(key);
+
+    if (cleanedUrl) localStorage.setItem('kinai_supabase_url', cleanedUrl);
     else localStorage.removeItem('kinai_supabase_url');
 
-    if (key) localStorage.setItem('kinai_supabase_anon_key', key.trim());
+    if (cleanedKey) localStorage.setItem('kinai_supabase_anon_key', cleanedKey);
     else localStorage.removeItem('kinai_supabase_anon_key');
 
     // Reset client cache so new instance is created with new keys

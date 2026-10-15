@@ -12,11 +12,11 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'PT KINAI (Kincir Angin Indonesia) — Grow Together, Better Every Day',
   description:
-    'Website resmi PT KINAI (Kincir Angin Indonesia), grup bisnis Indonesia yang bergerak di bidang manufaktur garmen, manufaktur makanan dan minuman, energi, serta konsultansi data dan operasional.',
+    'Website resmi PT KINAI (Kincir Angin Indonesia), grup bisnis Indonesia yang bergerak di bidang manufaktur garmen, manufaktur makanan dan minuman, energi, serta konsultan data dan operasional.',
   openGraph: {
     title: 'PT KINAI (Kincir Angin Indonesia) — Grow Together, Better Every Day',
     description:
-      'Grup bisnis Indonesia dengan keunggulan di bidang manufaktur garmen, manufaktur makanan dan minuman, energi, serta konsultansi data dan operasional.',
+      'Grup bisnis Indonesia dengan keunggulan di bidang manufaktur garmen, manufaktur makanan dan minuman, energi, serta konsultan data dan operasional.',
     type: 'website',
     locale: 'id_ID',
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'PT KINAI (Kincir Angin Indonesia)',
     description:
-      'Grow Together, Better Every Day — Manufaktur Garmen, Makanan & Minuman, Energi, serta Konsultansi Data & Operasional.',
+      'Grow Together, Better Every Day — Manufaktur Garmen, Makanan & Minuman, Energi, serta Konsultan Data & Operasional.',
   },
 };
 

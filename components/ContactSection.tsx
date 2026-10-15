@@ -79,8 +79,6 @@ export default function ContactSection() {
           <div className="lg:col-span-5">
             <div className="flex items-center gap-2 text-xs font-semibold text-[#064E3B] tracking-wider uppercase mb-3">
               <span>Hubungi Kami</span>
-              <span aria-hidden="true" className="text-stone-300">·</span>
-              <span className="text-stone-500 font-normal">Pertanyaan &amp; Korespondensi</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-900 leading-tight mb-6">
@@ -88,7 +86,7 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed mb-8">
-              Apakah Anda memiliki pertanyaan seputar grup usaha, lini manufaktur garmen, makanan &amp; minuman, energi, atau konsultansi data dan operasional? Silakan kirimkan pertanyaan Anda melalui formulir resmi ini.
+              Silakan kirimkan pertanyaan Anda melalui formulir resmi ini.
             </p>
 
             {/* Official Correspondence Card */}

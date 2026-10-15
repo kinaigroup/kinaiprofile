@@ -71,11 +71,9 @@ export default function PurposeVisionMission() {
         <div className="max-w-3xl mb-16">
           <div className="flex items-center gap-2 text-xs font-semibold text-[#064E3B] tracking-wider uppercase mb-3">
             <span>Arah &amp; Fondasi</span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-stone-500 font-normal">Purpose, Visi, dan Misi</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-900 leading-tight">
-            Fondasi Keberadaan dan Kompas Masa Depan KINAI
+            Kompas Masa Depan KINAI
           </h2>
         </div>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, LogIn, LogOut, ShieldCheck, UserPlus, PhoneCall } from 'lucide-react';
+import { Menu, X, LogIn, LogOut, ShieldCheck, PhoneCall } from 'lucide-react';
 import KinaiLogo from '@/components/KinaiLogo';
 import { useAuth } from '@/context/AuthContext';
 
@@ -110,23 +110,14 @@ export default function Navbar() {
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-4">
+              <div className="flex items-center">
                 <button
                   type="button"
                   onClick={() => openLoginModal('login')}
                   className="hover:text-[#064E3B] text-stone-700 transition-colors whitespace-nowrap shrink-0 py-1 flex items-center gap-1.5 font-semibold cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#064E3B] hover:after:w-full after:transition-all after:duration-200"
                 >
                   <LogIn className="w-4 h-4 text-[#064E3B]" />
-                  <span>Log In</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => openLoginModal('register')}
-                  className="hover:text-[#064E3B] text-stone-700 transition-colors whitespace-nowrap shrink-0 py-1 flex items-center gap-1.5 font-semibold cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#064E3B] hover:after:w-full after:transition-all after:duration-200"
-                >
-                  <UserPlus className="w-4 h-4 text-[#064E3B]" />
-                  <span>Daftar Akun</span>
+                  <span>Log In / Daftar</span>
                 </button>
               </div>
             )}
@@ -189,7 +180,7 @@ export default function Navbar() {
                 </div>
               </div>
             ) : (
-              <div className="pt-2 flex flex-col gap-2">
+              <div className="pt-2">
                 <button
                   type="button"
                   onClick={() => {
@@ -200,20 +191,7 @@ export default function Navbar() {
                 >
                   <span className="flex items-center gap-2">
                     <LogIn className="w-4 h-4" />
-                    <span>Log In (Portal KINASIH)</span>
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    openLoginModal('register');
-                  }}
-                  className="w-full flex items-center justify-between text-base font-semibold text-stone-700 hover:text-[#064E3B] py-2.5 border-b border-stone-100 cursor-pointer"
-                >
-                  <span className="flex items-center gap-2">
-                    <UserPlus className="w-4 h-4 text-emerald-700" />
-                    <span>Daftar Akun Baru</span>
+                    <span>Log In / Daftar</span>
                   </span>
                 </button>
               </div>

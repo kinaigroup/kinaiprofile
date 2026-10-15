@@ -1,6 +1,6 @@
 {
   "name": "PT KINAI - Kincir Angin Indonesia",
-  "description": "Website resmi PT KINAI (Kincir Angin Indonesia), grup bisnis Indonesia yang bergerak di bidang manufaktur garmen, manufaktur makanan dan minuman, energi, serta konsultansi data dan operasional. Grow Together, Better Every Day.",
+  "description": "Website resmi PT KINAI (Kincir Angin Indonesia), grup bisnis Indonesia yang bergerak di bidang manufaktur garmen, manufaktur makanan dan minuman, energi, serta konsultan data dan operasional. Grow Together, Better Every Day.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

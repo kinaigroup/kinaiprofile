@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Mail } from 'lucide-react';
 
 import KinaiLogo from '@/components/KinaiLogo';
 import { useAuth } from '@/context/AuthContext';
@@ -25,21 +25,18 @@ export default function Footer() {
               </div>
 
               <p className="text-sm text-stone-400 leading-relaxed max-w-sm mb-4">
-                Grup perusahaan Indonesia yang berakar di tanah air dan bertumbuh menuju panggung dunia, bergerak di bidang manufaktur garmen, makanan dan minuman, energi, serta konsultansi data dan operasional.
+                Grup perusahaan Indonesia yang berakar di tanah air dan bertumbuh menuju panggung dunia, bergerak di bidang manufaktur garmen, makanan dan minuman, energi, serta konsultan data dan operasional.
               </p>
-
-              <div className="text-xs text-stone-400 italic">
-                Slogan: <span className="text-white font-medium">&ldquo;Grow Together, Better Every Day&rdquo;</span>
-              </div>
             </div>
 
             <div className="mt-8 pt-4 border-t border-stone-800/80">
-              <span className="text-xs text-stone-400 block mb-1">Korespondensi Resmi</span>
+              <span className="text-xs text-stone-400 block mb-1.5">Korespondensi Resmi</span>
               <a
                 href="mailto:kinaigroup.id@gmail.com"
-                className="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
+                className="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors inline-flex items-center gap-2"
               >
-                kinaigroup.id@gmail.com
+                <Mail className="w-4 h-4 shrink-0 text-emerald-400" />
+                <span>kinaigroup.id@gmail.com</span>
               </a>
             </div>
           </div>
@@ -72,7 +69,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#rnd" className="hover:text-white transition-colors">
-                  R&amp;D Pilar Lintas Bisnis
+                  Research &amp; Development
                 </a>
               </li>
               <li>
@@ -86,7 +83,7 @@ export default function Footer() {
                   onClick={() => openLoginModal('login')}
                   className="hover:text-emerald-400 text-emerald-400/90 transition-colors cursor-pointer text-left font-medium"
                 >
-                  Portal KINASIH (Log In / Daftar)
+                  Log In / Daftar
                 </button>
               </li>
             </ul>
@@ -111,8 +108,8 @@ export default function Footer() {
                 <span className="text-xs text-stone-400">Sustainable Energy Solutions</span>
               </li>
               <li className="flex flex-col">
-                <span className="text-white font-medium">Konsultansi Data &amp; Operasional</span>
-                <span className="text-xs text-stone-400">Data &amp; Operations Advisory</span>
+                <span className="text-white font-medium">Konsultan Data &amp; Operasional</span>
+                <span className="text-xs text-stone-400">Data &amp; Operations Consultant</span>
               </li>
             </ul>
           </div>

@@ -737,7 +737,7 @@ export default function LoginModal() {
                           <option value="Manufaktur Garmen">Manufaktur Garmen</option>
                           <option value="Makanan & Minuman">Makanan &amp; Minuman</option>
                           <option value="Energi">Energi</option>
-                          <option value="Konsultansi Data & Ops">Konsultansi Data &amp; Ops</option>
+                          <option value="Konsultan Data & Operasional">Konsultan Data &amp; Operasional</option>
                           <option value="Ekosistem Pusat">Ekosistem Pusat</option>
                         </select>
                         <Building className="w-3.5 h-3.5 text-stone-400 absolute left-2.5 top-2.5" />

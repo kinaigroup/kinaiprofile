@@ -26,8 +26,8 @@ export default function Hero() {
       href: '#lini-bisnis',
     },
     {
-      title: 'Konsultansi Data & Operasional',
-      en: 'Data & Operations',
+      title: 'Konsultan Data & Operasional',
+      en: 'Data & Operations Consultant',
       icon: BarChart3,
       href: '#lini-bisnis',
     },
@@ -70,7 +70,7 @@ export default function Hero() {
             <p className="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl mb-8">
               Terinspirasi dari kincir angin yang mengubah hembusan angin menjadi energi
               bermanfaat, KINAI membangun ekosistem terhubung lintas manufaktur garmen,
-              makanan &amp; minuman, energi, serta konsultansi data dan operasional.
+              makanan &amp; minuman, energi, serta konsultan data dan operasional.
             </p>
 
             {/* CTAs */}
@@ -90,15 +90,6 @@ export default function Hero() {
                 <span>Tentang &amp; Filosofi</span>
                 <ArrowUpRight className="w-4 h-4 text-stone-500" />
               </a>
-            </div>
-
-            {/* Quiet trust markers */}
-            <div className="mt-10 pt-6 border-t border-stone-200/80 w-full flex items-center gap-6 text-xs text-stone-500">
-              <span className="font-medium text-stone-700">Ekosistem 4 Pilar Industri</span>
-              <span aria-hidden="true" className="text-stone-300">/</span>
-              <span>Berbasis R&amp;D Lintas Sektor</span>
-              <span aria-hidden="true" className="text-stone-300">/</span>
-              <span>Indonesia Menuju Global</span>
             </div>
           </motion.div>
 
